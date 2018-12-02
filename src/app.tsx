@@ -1,4 +1,5 @@
 import { h, render } from 'preact';
-import HelloWorld from './HelloWorld';
+import StarWarsApp from './StarWarsApp';
 
-render(<HelloWorld name="World" />, document.querySelector('#app'));
+
+render(<StarWarsApp/>, document.querySelector('#app'));
