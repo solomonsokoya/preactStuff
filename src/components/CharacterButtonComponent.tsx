@@ -16,7 +16,6 @@ export default class CharacterButtonComponent extends Component<CharacterButtonP
 
   onClick(){
     const charUrl = this.props.character.url;
-
-    this.props.onCharacterClick(charUrl).then(() => console.log("I work"))
+    this.props.onCharacterClick(charUrl)
   }
 }
