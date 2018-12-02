@@ -6,7 +6,7 @@ module.exports = {
         filename: 'app.js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx']
+        extensions: ['.js', '.ts', '.tsx']
     },
     module: {
         rules: [

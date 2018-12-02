@@ -1,5 +1,9 @@
+import {shim} from "promise.prototype.finally";
+shim();
+
 import { h, render } from "preact";
 import StarWarsWelcomeComponent from "./StarWarsWelcomeComponent";
+import CharacterCardComponent from "./components/CharacterCardComponent";
 import {characters} from "../characters.json";
 import {CharacterData} from "./model/CharacterData";
 import {FilmData} from "./model/FilmData";
@@ -18,10 +22,16 @@ class StarWarsApp {
     render(<StarWarsWelcomeComponent
       chars = {characters}
       onSumbit = {(url) => this.onCharSumbit(url)}
-    />,
-      this.el);
+    />,this.el);
   }
 
+  renderCharacterCard(character: CharacterData, films: Array<string>){
+    this.el.innerHTML = "";
+    render(<CharacterCardComponent
+      character = {character}
+      films = {films}
+    />, this.el)
+  }
 
   //To-do: Clean up
   async onCharSumbit(url: string){
@@ -44,20 +54,17 @@ class StarWarsApp {
           releaseDate: this.formatDate(film.release_date)
         })
       })
-      console.log(charData);
-      console.log(films);
+
+      this.renderCharacterCard(charData, films);
     } catch {
       console.log('error')
     }
-
-
   }
 
   formatDate(date: string){
     // https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const dateFormat = new Date(date);
-
     return dateFormat.toLocaleDateString("en-US", options)
   }
 }

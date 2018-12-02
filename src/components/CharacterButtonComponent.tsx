@@ -17,5 +17,6 @@ export default class CharacterButtonComponent extends Component<CharacterButtonP
   onClick(){
     const charUrl = this.props.character.url;
     this.props.onCharacterClick(charUrl)
+      .catch((error) => console.log("hi i am ")).finally(() => console.log("done"));
   }
 }
