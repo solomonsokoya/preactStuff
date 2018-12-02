@@ -3,11 +3,20 @@ import {CharacterData} from "../model/CharacterData";
 
 
 interface CharacterButtonProps {
-  characters: CharacterData
+  character: CharacterData;
+  onCharacterClick: (url: string) => Promise<any>;
 }
 
 export default class CharacterButtonComponent extends Component<CharacterButtonProps,{}>{
   render(props: CharacterButtonProps){
-    return(<div>hi</div>)
+    const charName = this.props.character.name;
+
+    return(<button onClick= {() => this.onClick()}>{charName}</button>)
+  }
+
+  onClick(){
+    const charUrl = this.props.character.url;
+
+    this.props.onCharacterClick(charUrl).then(() => console.log("I work"))
   }
 }

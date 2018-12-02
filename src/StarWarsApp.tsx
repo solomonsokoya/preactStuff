@@ -1,6 +1,7 @@
-import {h, Component} from 'preact';
+import {h, Component} from "preact";
 import CharacterButtonComponent from "./components/CharacterButtonComponent";
-import {characters}from "../characters.json";
+import {characters} from "../characters.json";
+import * as starWarsApi from "../starWarsApi";
 
 interface MainAppComponentProps {
     name?: string
@@ -16,7 +17,8 @@ export default class StarWarsApp extends Component<MainAppComponentProps, MainAp
       console.log(characters);
         return( <div> {characters.map((char) =>
             <CharacterButtonComponent
-              characters = {char}
+              character = {char}
+              onCharacterClick = {(url) => starWarsApi.starWarsApiCall(url)}
             />
         )} </div>
       )
