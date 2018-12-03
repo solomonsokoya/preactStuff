@@ -19,9 +19,14 @@ export default class StarWarsWelcomeComponent extends Component<MainAppComponent
         return( <div> {chars.map((char) =>
             <CharacterButtonComponent
               character = {char}
-              onCharacterClick = {(url) => this.props.onSumbit(url)}
+              onClick = {(url) => this.onClick(url)}
             />
         )} </div>
       )
+    }
+
+    onClick(url: string){
+      this.props.onSumbit(url)
+        .catch((error) => console.log("hi i am ")).finally(() => console.log("done"));
     }
 }

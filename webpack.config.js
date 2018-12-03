@@ -6,7 +6,11 @@ module.exports = {
         filename: 'app.js'
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx']
+        extensions: ['.js', '.ts', '.tsx'],
+        alias: {
+          "react": "preact",
+          "react-dom": "preact"
+        }
     },
     module: {
         rules: [
