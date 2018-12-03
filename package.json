@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "css-loader": "^1.0.1",
+    "express": "^4.16.4",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "preact": "^8.3.1",
