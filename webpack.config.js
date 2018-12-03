@@ -3,7 +3,8 @@ module.exports = {
     entry: ['./src/app'],
     output: {
         path: __dirname + '/dist',
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx'],
