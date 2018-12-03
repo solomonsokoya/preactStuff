@@ -1,10 +1,9 @@
 # StarWars Challenge
 
 ## To Run
-+ Search By Category Alcoholic
-    + https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic
-+ Search by drink ID
-    + https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=15346###Features
++ npm i
++ npm run build
+  + Once build has run select the index.html file to explorer 
 
 #### CORE STACK
 + Node.js
