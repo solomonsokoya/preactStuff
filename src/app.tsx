@@ -37,28 +37,27 @@ class StarWarsApp {
   async onCharSumbit(url: string){
     var charData: CharacterData;
     var films = [];
+    var characterJSON: any;
+    var filmJSON: any;
+    var promiseAll: any;
 
-    try{
-      var json = await starWarsApi.starWarsApiCall(url);
-      charData = {
-        name: json.name,
-        filmUrls: json.films,
-        gender: json.gender
-      };
-      var urls = charData.filmUrls;
-      var json1 = await Promise.all(urls.map(url => starWarsApi.starWarsApiCall(url)))
+    var charPromise = await starWarsApi.starWarsApiCall(url);
 
-      json1.forEach((film) =>{
-        films.push({
-          title: film.title,
-          releaseDate: this.formatDate(film.release_date)
+    characterJSON = await charPromise.json()
+    charData = { name: characterJSON.name, filmUrls: characterJSON.films, gender: characterJSON.gender };
+
+    var urls = charData.filmUrls;
+    promiseAll = await Promise.all(urls.map(url => starWarsApi.starWarsApiCall(url)));
+
+    promiseAll.forEach(async (film) =>{
+        filmJSON = await film.json();
+          films.push({
+            title: filmJSON.title,
+            releaseDate: this.formatDate(filmJSON.release_date)
+          })
+          this.renderCharacterCard(charData, films);
         })
-      })
 
-      this.renderCharacterCard(charData, films);
-    } catch {
-      console.log('error')
-    }
   }
 
   formatDate(date: string){
@@ -73,4 +72,3 @@ if(el){
   const app = new StarWarsApp(el);
   app.renderWelcomePage();
 }
-// render(<StarWarsAppCharacterApp/>, document.querySelector("#app"));

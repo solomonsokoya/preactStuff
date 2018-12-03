@@ -10,13 +10,15 @@ interface CharacterCardProps {
 export default class CharacterCardComponent extends Component<CharacterCardProps,{}>{
   render(props: CharacterCardProps){
     const films = this.props.films
-    console.log(films);
     return(
-      <div>
-        <h1>{this.props.character.name}</h1>
-        <div>
+      <div class= "characterContainer">
+        <h1 class= "charName">{this.props.character.name}</h1>
+        <div class ="filmContainer">
           {films.map((film) =>
-            <h1>{film.title}</h1>
+            <div class ="infoContainer">
+              <h1>Title: {film.title}</h1>
+              <h1>Release Date: {film.releaseDate}</h1>
+            </div>
           )}
         </div>
       </div>

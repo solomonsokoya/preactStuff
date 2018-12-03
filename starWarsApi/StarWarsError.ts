@@ -15,7 +15,7 @@ export class StarWarsError{
         break;
       default:
         this.code = StarWarsErrorCode.UnexpectedError;
-        this.message = "Sorry we are having Unexpected troubles right now"
+        this.message = "Sorry, We Are Having Unexpected Troubles Right Row"
     }
   }
 }
