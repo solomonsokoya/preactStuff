@@ -8,12 +8,13 @@ interface CharacterButtonProps {
   onClick: (url: string) => void;
 }
 
-export default class CharacterButtonComponent extends Component<CharacterButtonProps,{}>{
+export default class CharacterButtonComponent extends Component<CharacterButtonProps, {}>{
+
   render(props: CharacterButtonProps){
     const charName = this.props.character.name;
     const charUrl = this.props.character.url;
 
 
-    return(<Button> 1</Button>)
+    return(<button onClick = {() => this.props.onClick(charUrl)}>{charName}</button>)
   }
 }

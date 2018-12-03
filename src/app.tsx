@@ -1,8 +1,8 @@
 import {shim} from "promise.prototype.finally";
 shim();
-
 import { h, render } from "preact";
 import StarWarsWelcomeComponent from "./StarWarsWelcomeComponent";
+import "./style/style.less"
 import CharacterCardComponent from "./components/CharacterCardComponent";
 import {characters} from "../characters.json";
 import {CharacterData} from "./model/CharacterData";
@@ -25,7 +25,7 @@ class StarWarsApp {
     />,this.el);
   }
 
-  renderCharacterCard(character: CharacterData, films: Array<string>){
+  renderCharacterCard(character: CharacterData, films: Array<FilmData>){
     this.el.innerHTML = "";
     render(<CharacterCardComponent
       character = {character}

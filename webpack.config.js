@@ -17,8 +17,19 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loaders: ['ts-loader']
-            }
+                loaders: ['ts-loader'],
+            },
+            {
+                test: /\.(css|less)$/,
+                use: [{
+                  loader: 'style-loader' // creates style nodes from JS strings
+                }, {
+                  loader: 'css-loader' // translates CSS into CommonJS
+                }, {
+                  loader: 'less-loader' // compiles Less to CSS
+                }]
+                  // compiles Less to CSS
+              }
         ]
     }
 };
